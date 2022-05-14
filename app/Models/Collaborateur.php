@@ -17,12 +17,12 @@ class Collaborateur extends Authenticatable implements JWTSubject
 
     protected $fillable = [
         'matricule',
-        'civilite',
+        'sexe',
         'nom',
         'prenom',
         'telephone',
-        'e-mail',
-        'carte_identite',
+        'email',
+        'cin',
         'date_naissance',
         'adresse',
         'code_postale',
@@ -30,14 +30,8 @@ class Collaborateur extends Authenticatable implements JWTSubject
         'fonction',
         'date_entree',
         'date_sortie',
-        'pole',
-        'immeuble',
-        'adresse_imme',
-        'code_postal_imme',
         'ville',
         'departement',
-        'parrain',
-        'manager',
     ];
 
     public function orders()
