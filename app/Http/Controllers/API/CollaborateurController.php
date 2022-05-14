@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Collaborateur;
 use Illuminate\Support\Facades\Hash;
 
+
 class CollaborateurController extends Controller
 {
 
@@ -43,6 +44,30 @@ class CollaborateurController extends Controller
             'message'=>'Collaborateur Added Successful',
         ]);
     }
+
+    public function CollaborateurLogin(Request $request){
+        $credentials = $request->only('email', 'password');
+        $token = null;
+        try {
+            if (!$token = auth()->guard('collaborateurs')->attempt($credentials)) {
+                return response()->json([
+                    'response' => 'error',
+                    'message' => 'invalid_email_or_password',
+                ]);
+            }
+        } catch (\Exception $exception) {
+            return response()->json([
+                'response' => 'error',
+                'message' => 'failed_to_create_token',
+            ]);
+        }
+
+        return response()->json([
+                'token' => $token,
+                'role' => 'collaborateur',
+            ]);
+    }
+
     public function getCollaborateur($id)
     {
         $collaborateur = Collaborateur::find($id);

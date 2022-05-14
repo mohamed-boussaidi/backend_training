@@ -8,7 +8,6 @@ use Auth;
 use Validator;
 use App\Models\User;
 use JWTAuth;
-use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
 {
@@ -50,28 +49,24 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return response()->json(['error' => $validator->messages()], 200);
         }
-
-        //Request is validated
-        //Crean token
+        $token = null;
         try {
-            if (! $token = JWTAuth::attempt($credentials)) {
+            if (!$token = auth()->guard('users')->attempt($credentials)) {
                 return response()->json([
-                    'success' => false,
-                    'message' => 'Login credentials are invalid.',
-                ], 400);
+                    'response' => 'error',
+                    'message' => 'invalid_email_or_password',
+                ]);
             }
-        } catch (JWTException $e) {
-            return $credentials;
+        } catch (\Exception $exception) {
             return response()->json([
-                'success' => false,
-                'message' => 'Could not create token.',
-            ], 500);
+                'response' => 'error',
+                'message' => 'failed_to_create_token',
+            ]);
         }
 
-        //Token created, return with success response and jwt token
         return response()->json([
-            'success' => true,
             'token' => $token,
+            'role' => 'admin',
         ]);
     }
 

@@ -40,9 +40,13 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'users' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
+        ],
         'collaborateurs' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Collaborateur::class,
+            'driver' => 'jwt',
+            'provider' => 'collaborateurs',
            ],
     ],
 
@@ -69,14 +73,9 @@ return [
             'model' => App\Models\User::class,
         ],
         'collaborateurs' => [
-            'driver' => 'session',
-            'provider' => 'collaborateurs',
+            'driver' => 'eloquent',
+            'model' => App\Models\Collaborateur::class,
            ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*

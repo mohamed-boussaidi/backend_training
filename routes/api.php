@@ -61,6 +61,9 @@ Route::put('/UpdateCollaborateurs/{id}', [CollaborateurController::class, 'updat
 //API delete note de frais
 Route::delete('/deleteCollaborateurs/{id}', [CollaborateurController::class, 'destroy']);
 
+//API post login collaborateur
+Route::post('/collaborateurlogin', [CollaborateurController::class, 'CollaborateurLogin']);
+
 /////////////////////////////////////////////////////// Gestion des salle////////////////////////////////////////////////////////////////////
 
 //API add salle

@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Collaborateur extends Model
+class Collaborateur extends Authenticatable implements JWTSubject
 {
     use HasFactory;
     protected $table = 'collaborateurs';
@@ -55,8 +56,27 @@ class Collaborateur extends Model
     {
         return $this->hasMany(Conge::class);
     }
-    public function getAuthPassword()
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    public function getJWTIdentifier()
     {
-     return $this->employee_password;
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }
