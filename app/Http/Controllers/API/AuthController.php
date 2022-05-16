@@ -55,13 +55,13 @@ class AuthController extends Controller
                 return response()->json([
                     'response' => 'error',
                     'message' => 'invalid_email_or_password',
-                ]);
+                ])->setStatusCode(404);;;
             }
         } catch (\Exception $exception) {
             return response()->json([
                 'response' => 'error',
                 'message' => 'failed_to_create_token',
-            ]);
+            ])->setStatusCode(500);;
         }
 
         return response()->json([
