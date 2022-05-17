@@ -55,7 +55,7 @@ class AuthController extends Controller
                 return response()->json([
                     'response' => 'error',
                     'message' => 'invalid_email_or_password',
-                ])->setStatusCode(404);;;
+                ])->setStatusCode(404);
             }
         } catch (\Exception $exception) {
             return response()->json([
