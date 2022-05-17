@@ -16,6 +16,13 @@ class CongeController extends Controller
         return response()->json($conge);
 
      }
+
+
+    public function getCongeById($id)
+    {
+        $conge = Conge::find($id);
+        return response()->json($conge)->setStatusCode(200);
+    }
      public function addConge(Request $request)
      {
          $conge = new Conge;

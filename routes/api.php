@@ -138,6 +138,9 @@ Route::post('/addConge', [CongeController::class, 'addConge']);
 //API get Note de conge
 Route::get('/Conges', [CongeController::class, 'index']);
 
+//API get Collaborateur
+Route::get('/getConge/{id}', [CongeController::class, 'getCongeById']);
+
 // API delete Note de conge
 Route::delete('/deleteConge/{id}', [CongeController::class, 'deleteConge']);
 
