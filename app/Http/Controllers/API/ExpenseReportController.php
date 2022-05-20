@@ -16,6 +16,26 @@ class ExpenseReportController extends Controller
     }
 
 
+    public function update(Request $request, $id){
+        $expense = ExpenseReport::find($id);
+        $expense->collaborateur_id = $request->input('collaborateur_id');
+        $expense->status = 'pendding';
+        $expense->date_demande = $request->input('date_demande');
+        $expense->client = $request->input('client');
+        $expense->type_depense = $request->input('type_depense');
+        $expense->total_ttc = $request->input('total_ttc');
+        $expense->update();
+        return response()->json([
+            'status'=> 200,
+            'message'=>'expense Update Successfully',
+        ]);
+
+     }
+    public function getExpenseById($id)
+    {
+        $expense = ExpenseReport::find($id);
+        return response()->json($expense)->setStatusCode(200);
+    }
         public function addExpense(Request $request)
     {
         $expense = new ExpenseReport();
@@ -37,35 +57,35 @@ class ExpenseReportController extends Controller
 
     public function acceptExpense(Request $request, $id)
     {
-        $order = Order::find($id);
-        $order->status = 'accepted';
-        $order->save();
+        $expense = ExpenseReport::find($id);
+        $expense->status = 'accepted';
+        $expense->save();
 
         return response()->json([
             'status'=> 200,
-            'message'=>'Order Accepted Successfully',
+            'message'=>'expense Accepted Successfully',
         ]);
     }
 
     public function rejectExpense(Request $request, $id)
     {
-        $order = Order::find($id);
-        $order->status = 'rejected';
-        $order->save();
+        $expense = ExpenseReport::find($id);
+        $expense->status = 'rejected';
+        $expense->save();
 
         return response()->json([
             'status'=> 200,
-            'message'=>'Order Rejected Successfully',
+            'message'=>'expense Rejected Successfully',
         ]);
     }
 
     public function deleteExpense(Request $request, $id)
     {
-        $order = Order::find($id);
-        $order -> delete();
+        $expense = ExpenseReport::find($id);
+        $expense -> delete();
         return response()->json([
             'status'=> 200,
-            'message'=>'Order deleted Successfully',
+            'message'=>'ExpenseReport deleted Successfully',
         ]);
     }
 }

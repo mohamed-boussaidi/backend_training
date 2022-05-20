@@ -8,7 +8,19 @@ use App\Models\SalleReservation;
 
 
 class SalleReservationController extends Controller
-{
+{   
+
+
+    public function index(){
+        $reservation = SalleReservation::with('salle','collaborateur')
+        ->orderBy(\request()->sortBy ?? 'id', \request()->orderBy ?? 'desc')->get();         
+        return response()->json($reservation);
+     }
+    public function getReservation($id)
+    {
+        $reservation = SalleReservation::find($id);
+        return response()->json($reservation);
+    }
     public function addReservation(Request $request)
      {
          $reservation = new SalleReservation;
@@ -30,7 +42,7 @@ class SalleReservationController extends Controller
      }
      public function deleteReservation(Request $request, $id)
     {
-        $reservation = Reservation::find($id);
+        $reservation = SalleReservation::find($id);
         $reservation -> delete();
         return response()->json([
             'status'=> 200,

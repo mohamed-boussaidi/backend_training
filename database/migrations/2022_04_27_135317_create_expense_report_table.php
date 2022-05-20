@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('status', 50)->nullable();
             $table->foreignId('collaborateur_id') ->constrained('collaborateurs') ->onUpdate('cascade') ->onDelete('cascade');
             $table->string('type_depense');
-            $table->string('total_ttc');
-            $table->string('date_demande');
+            $table->float('total_ttc');
+            $table->timestamp('date_demande')->nullable();
             $table->string('client');
             $table->timestamps();
         });

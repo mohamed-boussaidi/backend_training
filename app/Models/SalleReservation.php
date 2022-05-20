@@ -19,9 +19,9 @@ class SalleReservation extends Model
         return $this->belongsTo(Collaborateur::class);
     }
 
-    public function Salle(): BelongsToMany
+    public function salle(): BelongsTo
     {
-        return $this->belongsToMany(Salle::class);
+        return $this->belongsTo(Salle::class);
     }
 }
 

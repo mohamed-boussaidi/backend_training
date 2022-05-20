@@ -17,5 +17,4 @@ class Conge extends Model
     {
         return $this->belongsTo(Collaborateur::class);
     }
-
 }

@@ -71,7 +71,7 @@ Route::post('/addSalle', [SalleController::class, 'store']);
 //API get salle
 Route::get('/Salles', [SalleController::class, 'index']);
 //API modifier salle
-Route::get('/editSalle/{id}', [SalleController::class, 'edit']);
+Route::get('/getSalle/{id}', [SalleController::class, 'edit']);
  //API Update salle
 Route::get('/UpdateSalle/{id}', [SalleController::class, 'update']);
 // API delete salle
@@ -89,7 +89,7 @@ Route::post('/addproduct', [ProductController::class, 'store']);
 //API get produit
 Route::get('/Products', [ProductController::class, 'index']);
 //API modifier produit
-Route::get('/editProduct/{id}', [ProductController::class, 'edit']);
+Route::get('/getProduct/{id}', [ProductController::class, 'getProductById']);
  //API Update produit
 Route::put('/UpdateProduct/{id}', [ProductController::class, 'update']);
 // API delete produit
@@ -103,6 +103,12 @@ Route::post('/addorder', [OrderController::class, 'addOrder']);
 
 //API get order
 Route::get('/orders', [OrderController::class, 'index']);
+
+//API Update ExpenseReport
+Route::put('/Updateorder/{id}', [CongeController::class, 'update']);
+
+//API get Conge
+Route::get('/getorder/{id}', [CongeController::class, 'getOrderById']);
 
 // API delete order
 Route::delete('/deleteorder/{id}', [OrderController::class, 'deleteOrder']);
@@ -121,6 +127,12 @@ Route::post('/addExpense', [ExpenseReportController::class, 'addExpense']);
 //API get ExpenseReport
 Route::get('/Expenses', [ExpenseReportController::class, 'index']);
 
+ //API Update ExpenseReport
+ Route::put('/UpdateExpense/{id}', [ExpenseReportController::class, 'update']);
+
+ //API get ExpenseReport
+Route::get('/getExpense/{id}', [ExpenseReportController::class, 'getExpenseById']);
+
 // API delete ExpenseReport
 Route::delete('/deleteExpense/{id}', [ExpenseReportController::class, 'deleteExpense']);
 
@@ -138,7 +150,10 @@ Route::post('/addConge', [CongeController::class, 'addConge']);
 //API get Note de conge
 Route::get('/Conges', [CongeController::class, 'index']);
 
-//API get Collaborateur
+ //API Update Conge
+Route::put('/UpdateConge/{id}', [CongeController::class, 'update']);
+
+//API get Conge
 Route::get('/getConge/{id}', [CongeController::class, 'getCongeById']);
 
 // API delete Note de conge
@@ -158,3 +173,6 @@ Route::post('/addReservation', [SalleReservationController::class, 'addReservati
 
 // API delete Reservation
 Route::delete('/deleteReservation/{id}', [SalleReservationController::class, 'deleteReservation']);
+
+//API get Reservation
+Route::get('/Reservations', [SalleReservationController::class, 'index']);

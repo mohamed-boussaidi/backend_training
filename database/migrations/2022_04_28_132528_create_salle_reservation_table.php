@@ -18,12 +18,14 @@ return new class extends Migration
             $table->string('demandateur');
             $table->foreignId('collaborateur_id') ->constrained('collaborateurs') ->onUpdate('cascade') ->onDelete('cascade');
             $table->foreignId('salle_id') ->constrained('salle') ->onUpdate('cascade') ->onDelete('cascade');
-            $table->string('hour_start');
-            $table->string('hour_end');
-            $table->string('date_reunion');
+            $table->timestamp('hour_start')->nullable();
+            $table->timestamp('hour_end')->nullable();
+            $table->timestamp('date_reunion')->nullable();
             $table->string('nbr_participant');
             $table->string('material_dispo');
             $table->string('name_event');
+            
+
             $table->timestamps();
         });
     }

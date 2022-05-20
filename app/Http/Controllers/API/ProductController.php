@@ -9,11 +9,8 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     public function index(){
-        $product = Product::all();
-         return response()->json([
-          /*'status'=> 200,*/
-            'product'=> $product,
-         ]);
+        $products = Product::all();
+         return response()->json($products);
      }
      public function store(Request $request)
      {
@@ -29,22 +26,20 @@ class ProductController extends Controller
              'message'=>' produit Added Successful',
          ]);
      }
-     public function edit($id)
+     public function getProductById($id)
      {
-         $pproduct = Product::find($id);
-         return response()->json([
-             /*'status'=> 200,*/
-             'product'=> $product,
-            ]);
+         $product = Product::find($id);
+         return response()->json($product);
 
      }
      public function update(Request $request, $id)
      {
-        $product = new Product;
+        $product = Product::find($id);
         $product->nom = $request->input('nom');
         $product->type = $request->input('type');
         $product->modele = $request->input('modele');
         $product->prix = $request->input('prix');
+
         $product->update();
 
          return response()->json([
