@@ -109,4 +109,8 @@ class CollaborateurController extends Controller
             'message'=>'Collaborateur deleted Successfully',
         ]);
     }
+    public function collabStat(){
+        $collaborateurs = Collaborateur::all();
+        return response()->json(['nbr_collaborateurs'=>$collaborateurs->count()]);
+    }
 }

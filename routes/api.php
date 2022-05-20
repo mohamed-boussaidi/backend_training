@@ -64,6 +64,9 @@ Route::delete('/deleteCollaborateurs/{id}', [CollaborateurController::class, 'de
 //API post login collaborateur
 Route::post('/collaborateurlogin', [CollaborateurController::class, 'CollaborateurLogin']);
 
+//API get Stat Collaborateur
+Route::get('/statcollaborateurs', [CollaborateurController::class, 'collabStat']);
+
 /////////////////////////////////////////////////////// Gestion des salle////////////////////////////////////////////////////////////////////
 
 //API add salle
