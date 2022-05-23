@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('ville');
             $table->string('departement');
             $table->string('password');
+            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

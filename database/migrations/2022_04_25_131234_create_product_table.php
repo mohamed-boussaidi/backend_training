@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nom');
             $table->string('modele');
             $table->float('prix');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

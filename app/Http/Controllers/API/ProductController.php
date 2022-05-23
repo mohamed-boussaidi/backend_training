@@ -19,6 +19,7 @@ class ProductController extends Controller
          $product->type = $request->input('type');
          $product->modele = $request->input('modele');
          $product->prix = $request->input('prix');
+         $product->image = $request->input('image');
          $product->save();
 
          return response()->json([
@@ -39,6 +40,7 @@ class ProductController extends Controller
         $product->type = $request->input('type');
         $product->modele = $request->input('modele');
         $product->prix = $request->input('prix');
+         $product->image = $request->input('image');
 
         $product->update();
 

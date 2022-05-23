@@ -23,6 +23,7 @@ class SalleController extends Controller
          $salle->equipements = $request->input('equipements');
          $salle->ville = $request->input('ville');
          $salle->etage = $request->input('etage');
+         $salle->image = $request->input('image');
          $salle->save();
 
          return response()->json([
@@ -44,7 +45,9 @@ class SalleController extends Controller
         $salle->equipements = $request->input('equipements');
         $salle->ville = $request->input('ville');
         $salle->etage = $request->input('etage');
-        $salle->update();
+         $salle->image = $request->input('image');
+
+         $salle->update();
 
         return response()->json([
             'status'=> 200,

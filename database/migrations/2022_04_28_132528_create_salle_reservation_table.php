@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('salle_reservation', function (Blueprint $table) {
             $table->id();
-            $table->string('demandateur');
             $table->foreignId('collaborateur_id') ->constrained('collaborateurs') ->onUpdate('cascade') ->onDelete('cascade');
             $table->foreignId('salle_id') ->constrained('salle') ->onUpdate('cascade') ->onDelete('cascade');
             $table->timestamp('hour_start')->nullable();
@@ -24,7 +23,7 @@ return new class extends Migration
             $table->string('nbr_participant');
             $table->string('material_dispo');
             $table->string('name_event');
-            
+
 
             $table->timestamps();
         });

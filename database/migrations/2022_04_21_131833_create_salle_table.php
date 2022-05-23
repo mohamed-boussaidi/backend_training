@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('equipements');
             $table->string('ville');
             $table->string('etage');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\FileUploadController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\CollaborateurController;
@@ -179,3 +180,9 @@ Route::delete('/deleteReservation/{id}', [SalleReservationController::class, 'de
 
 //API get Reservation
 Route::get('/Reservations', [SalleReservationController::class, 'index']);
+
+//API Upload Images
+
+Route::post('/uploadImage/users', [FileUploadController::class, 'uploadImageUsers']);
+Route::post('/uploadImage/products', [FileUploadController::class, 'uploadImageProducts']);
+Route::post('/uploadImage/salles', [FileUploadController::class, 'uploadImageSalles']);

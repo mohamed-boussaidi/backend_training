@@ -37,6 +37,7 @@ class CollaborateurController extends Controller
         $collaborateur->departement = $request->input('departement');
         $collaborateur->ville = $request->input('ville');
         $collaborateur->password = Hash::make($request->input('password'));
+        $collaborateur->image = $request->input('image');
         $collaborateur->save();
 
         return response()->json([
@@ -93,6 +94,7 @@ class CollaborateurController extends Controller
         $collaborateur->ville = $request->input('ville');
         $collaborateur->departement = $request->input('departement');
         $collaborateur->ville = $request->input('ville');
+        $collaborateur->image = $request->input('image');
         $collaborateur->update();
 
         return response()->json([
