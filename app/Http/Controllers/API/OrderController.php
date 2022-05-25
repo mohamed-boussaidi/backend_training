@@ -102,5 +102,8 @@ class OrderController extends Controller
             'message'=>'Order deleted Successfully',
         ]);
     }
-
+    public function OrderStat(){
+        $orders = Order::all();
+        return response()->json(['orders'=>$orders->count()]);
+    }
 }

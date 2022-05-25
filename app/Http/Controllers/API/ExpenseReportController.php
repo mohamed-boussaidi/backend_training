@@ -88,4 +88,8 @@ class ExpenseReportController extends Controller
             'message'=>'ExpenseReport deleted Successfully',
         ]);
     }
+    public function ExpenseStat(){
+        $expenses = ExpenseReport::all();
+        return response()->json(['nbr_expenses'=>$expenses->count()]);
+    }
 }

@@ -33,7 +33,7 @@ class SalleController extends Controller
      }
      public function edit($id)
      {
-         $salle = salle::find($id);
+         $salle = Salle::find($id);
          return response()->json($salle);
      }
      public function update(Request $request, $id)
@@ -45,7 +45,7 @@ class SalleController extends Controller
         $salle->equipements = $request->input('equipements');
         $salle->ville = $request->input('ville');
         $salle->etage = $request->input('etage');
-         $salle->image = $request->input('image');
+        $salle->image = $request->input('image');
 
          $salle->update();
 

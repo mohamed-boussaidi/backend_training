@@ -90,4 +90,8 @@ class CongeController extends Controller
             'message'=>'Conge deleted Successfully',
         ]);
     }
+    public function congeStat(){
+        $conges = Conge::all();
+        return response()->json(['nbr_conges'=>$conges->count()]);
+    }
 }
