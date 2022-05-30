@@ -25,6 +25,8 @@ class AuthController extends Controller
 
         $user = User::create([
             'name' => $request->name,
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
             'email' => $request->email,
             'image' => $request->image,
             'password' => Hash::make($request->password)
@@ -64,8 +66,10 @@ class AuthController extends Controller
                 'message' => 'failed_to_create_token',
             ])->setStatusCode(500);;
         }
-
+        $email =$request->input('email');
+        $user = User::where('email',$email)->first();
         return response()->json([
+            'data' => $user,
             'token' => $token,
             'role' => 'admin',
         ]);

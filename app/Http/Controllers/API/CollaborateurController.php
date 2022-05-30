@@ -61,10 +61,12 @@ class CollaborateurController extends Controller
                 'message' => 'failed_to_create_token',
             ]);
         }
-
+        $email =$request->input('email');
+        $user = Collaborateur::where('email',$email)->first();
         return response()->json([
-                'token' => $token,
-                'role' => 'collaborateur',
+            'data' => $user,
+            'token' => $token,
+            'role' => 'collaborateur',
             ]);
     }
 

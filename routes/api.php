@@ -186,3 +186,9 @@ Route::get('/Reservations', [SalleReservationController::class, 'index']);
 Route::post('/uploadImage/users', [FileUploadController::class, 'uploadImageUsers']);
 Route::post('/uploadImage/products', [FileUploadController::class, 'uploadImageProducts']);
 Route::post('/uploadImage/salles', [FileUploadController::class, 'uploadImageSalles']);
+
+
+
+
+
+
