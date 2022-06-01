@@ -23,7 +23,6 @@ class CongeController extends Controller
         $conge->status = 'pendding';
         $conge->date_debut = $request->input('date_debut');
         $conge->date_fin = $request->input('date_fin');
-        $conge->date_demande = $request->input('date_demande');
         $conge->nbr_jrs = $request->input('nbr_jrs');
         $conge->type_conge = $request->input('type_conge');
         $conge->update();
@@ -47,7 +46,6 @@ class CongeController extends Controller
          $conge->status = 'pendding';
          $conge->date_debut = $request->input('date_debut');
          $conge->date_fin = $request->input('date_fin');
-         $conge->date_demande = $request->input('date_demande');
          $conge->nbr_jrs = $request->input('nbr_jrs');
          $conge->type_conge = $request->input('type_conge');
          $conge->save();
@@ -90,8 +88,12 @@ class CongeController extends Controller
             'message'=>'Conge deleted Successfully',
         ]);
     }
-    public function congeStat(){
-        $conges = Conge::all();
-        return response()->json(['nbr_conges'=>$conges->count()]);
+
+    public function getCongeStat(Request $request,$id)
+    {
+        $conges = Conge::where('collaborateur_id', '=', $id)->sum('nbr_jrs');
+
+        return response()->json(['sum'=>$conges]);
+
     }
 }

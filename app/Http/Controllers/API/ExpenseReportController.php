@@ -88,8 +88,12 @@ class ExpenseReportController extends Controller
             'message'=>'ExpenseReport deleted Successfully',
         ]);
     }
-    public function ExpenseStat(){
+    public function ExpenseStat(Request $request){
         $expenses = ExpenseReport::all();
         return response()->json(['nbr_expenses'=>$expenses->count()]);
+    }
+    public function ExpenseSum(Request $request, $id){
+        $expenses = ExpenseReport::where('collaborateur_id', '=', $id)->sum('total_ttc');
+        return response()->json(['sum'=>$expenses]);
     }
 }

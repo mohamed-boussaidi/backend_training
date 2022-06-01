@@ -31,7 +31,6 @@ class SalleReservationController extends Controller
          $reservation->hour_start = Carbon::createFromFormat('Y-m-d\TH:i:s', $request->input('hour_start'));
          /** ---------       send this format 2017-10-19T15:30:00        ------------ **/
          $reservation->hour_end = Carbon::createFromFormat('Y-m-d\TH:i:s', $request->input('hour_end'));
-         $reservation->date_reunion = $request->input('date_reunion');
          $reservation->nbr_participant = $request->input('nbr_participant');
          $reservation->material_dispo = $request->input('material_dispo');
          $reservation->name_event = $request->input('name_event');
@@ -50,5 +49,14 @@ class SalleReservationController extends Controller
             'status'=> 200,
             'message'=>'Reservation deleted Successfully',
         ]);
+    }
+
+    public function getReservationStat(Request $request,$id)
+    {
+        $reservation = SalleReservation::select('*')
+            ->where('collaborateur_id', '=', $id)
+            ->get();
+
+        return response()->json(['nbr'=>count($reservation)]);
     }
 }

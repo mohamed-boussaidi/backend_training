@@ -15,6 +15,15 @@ class OrderController extends Controller
             ->orderBy(\request()->sortBy ?? 'id', \request()->orderBy ?? 'desc')->get();
         return response()->json($orders);
     }
+    public function getOrdersstat(Request $request,$id)
+    {
+        $orders = Order::select('*')
+            ->where('collaborateur_id', '=', $id)
+            ->get();
+
+        return response()->json(['nbr'=>count($orders)]);
+
+    }
     public function update(Request $request, $id){
         $order = Order::find($id);
         $order->collaborateur_id = $request->input('collaborateur_id');
@@ -29,7 +38,7 @@ class OrderController extends Controller
                 $order_product->product_id=$product;
                 $order_product->save();
             }
-            
+
         }
         return response()->json([
             'status'=> 200,
@@ -51,7 +60,7 @@ class OrderController extends Controller
         $order->status = 'pendding';
         if($order->save()){
             $data=Order::all()->last();
-            $products = json_decode($request->input('products'));
+            $products = $request->input('products');
 
             foreach ($products as $product){
                 $order_product = new OrderProduct();
@@ -59,7 +68,7 @@ class OrderController extends Controller
                 $order_product->product_id=$product;
                 $order_product->save();
             }
-            
+
         }
 
         return response()->json([

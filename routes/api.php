@@ -100,6 +100,8 @@ Route::put('/UpdateProduct/{id}', [ProductController::class, 'update']);
 Route::delete('/deleteProduct/{id}', [ProductController::class, 'destroy']);
 
 
+
+
 /////////////////////////////////////////////////////////////Gestion des commandes  ////////////////////////////////////////////////////////////////////
 
 //API add order
@@ -122,6 +124,9 @@ Route::get('/rejectorder/{id}', [OrderController::class, 'rejectOrder']);
 
 // API accept order
 Route::get('/acceptorder/{id}', [OrderController::class, 'acceptOrder']);
+
+Route::get('/getordersstat/{id}', [OrderController::class, 'getOrdersstat']);
+
 
 /////////////////////////////////////////////////////////////Gestion des commandes  de Note de frais  ////////////////////////////////////////////////////////////////////
 
@@ -146,6 +151,8 @@ Route::get('/rejectExpense/{id}', [ExpenseReportController::class, 'rejectExpens
 // API accept ExpenseReport
 Route::get('/acceptExpense/{id}', [ExpenseReportController::class, 'acceptExpense']);
 
+Route::get('/expensesum/{id}', [ExpenseReportController::class, 'ExpenseSum']);
+
 /////////////////////////////////////////////////////////////Gestion des conges ////////////////////////////////////////////////////////////////////
 
 //API add Note de conge
@@ -168,6 +175,8 @@ Route::get('/rejectConge/{id}', [CongeController::class, 'rejectConge']);
 
 // API accept Note de conge
 Route::get('/acceptConge/{id}', [CongeController::class, 'acceptConge']);
+// API accept Note de conge
+Route::get('/getcongestat/{id}', [CongeController::class, 'getCongeStat']);
 
 
 /////////////////////////////////////////////////////////////Gestion des Reservation_Salle ////////////////////////////////////////////////////////////////////
@@ -180,6 +189,8 @@ Route::delete('/deleteReservation/{id}', [SalleReservationController::class, 'de
 
 //API get Reservation
 Route::get('/Reservations', [SalleReservationController::class, 'index']);
+
+Route::get('/getreservationstat/{id}', [SalleReservationController::class, 'getReservationStat']);
 
 //API Upload Images
 

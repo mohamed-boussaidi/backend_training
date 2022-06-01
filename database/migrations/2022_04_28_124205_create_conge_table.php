@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('collaborateur_id') ->constrained('collaborateurs') ->onUpdate('cascade') ->onDelete('cascade');
             $table->timestamp('date_debut')->nullable();
             $table->timestamp('date_fin')->nullable();
-            $table->timestamp('date_demande')->nullable();
             $table->integer('nbr_jrs');
             $table->string('type_conge');
             $table->timestamps();
