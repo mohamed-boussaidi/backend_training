@@ -15,7 +15,7 @@ class OrderController extends Controller
             ->orderBy(\request()->sortBy ?? 'id', \request()->orderBy ?? 'desc')->get();
         return response()->json($orders);
     }
-    public function getOrdersstat(Request $request,$id)
+    public function getOrderstatByCollaborateur(Request $request,$id)
     {
         $orders = Order::select('*')
             ->where('collaborateur_id', '=', $id)
@@ -111,8 +111,8 @@ class OrderController extends Controller
             'message'=>'Order deleted Successfully',
         ]);
     }
-    public function OrderStat(){
+    public function AllOrderStat(){
         $orders = Order::all();
-        return response()->json(['orders'=>$orders->count()]);
+        return response()->json(['nbr'=>count($orders)]);
     }
 }

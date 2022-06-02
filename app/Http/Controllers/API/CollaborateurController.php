@@ -113,6 +113,6 @@ class CollaborateurController extends Controller
     }
     public function collabStat(){
         $collaborateurs = Collaborateur::all();
-        return response()->json(['nbr_collaborateurs'=>$collaborateurs->count()]);
+        return response()->json(['nbr'=>$collaborateurs->count()]);
     }
 }

@@ -50,8 +50,14 @@ class SalleReservationController extends Controller
             'message'=>'Reservation deleted Successfully',
         ]);
     }
+    public function AllReservationStat(Request $request)
+    {
+        $reservation = SalleReservation::all();
 
-    public function getReservationStat(Request $request,$id)
+        return response()->json(['nbr'=>count($reservation)]);
+    }
+
+    public function ReservationStatByCollaborateur(Request $request,$id)
     {
         $reservation = SalleReservation::select('*')
             ->where('collaborateur_id', '=', $id)

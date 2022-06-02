@@ -125,7 +125,9 @@ Route::get('/rejectorder/{id}', [OrderController::class, 'rejectOrder']);
 // API accept order
 Route::get('/acceptorder/{id}', [OrderController::class, 'acceptOrder']);
 
-Route::get('/getordersstat/{id}', [OrderController::class, 'getOrdersstat']);
+Route::get('/getorderstatbycollaborateur/{id}', [OrderController::class, 'getOrderstatByCollaborateur']);
+
+Route::get('/allorderstat', [OrderController::class, 'AllOrderStat']);
 
 
 /////////////////////////////////////////////////////////////Gestion des commandes  de Note de frais  ////////////////////////////////////////////////////////////////////
@@ -152,6 +154,8 @@ Route::get('/rejectExpense/{id}', [ExpenseReportController::class, 'rejectExpens
 Route::get('/acceptExpense/{id}', [ExpenseReportController::class, 'acceptExpense']);
 
 Route::get('/expensesum/{id}', [ExpenseReportController::class, 'ExpenseSum']);
+
+Route::get('/expensestat', [ExpenseReportController::class, 'ExpenseStat']);
 
 /////////////////////////////////////////////////////////////Gestion des conges ////////////////////////////////////////////////////////////////////
 
@@ -190,7 +194,9 @@ Route::delete('/deleteReservation/{id}', [SalleReservationController::class, 'de
 //API get Reservation
 Route::get('/Reservations', [SalleReservationController::class, 'index']);
 
-Route::get('/getreservationstat/{id}', [SalleReservationController::class, 'getReservationStat']);
+Route::get('/reservationstatbycollaborateur/{id}', [SalleReservationController::class, 'ReservationStatByCollaborateur']);
+
+Route::get('/allreservationstat', [SalleReservationController::class, 'AllReservationStat']);
 
 //API Upload Images
 

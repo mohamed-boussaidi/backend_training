@@ -90,7 +90,7 @@ class ExpenseReportController extends Controller
     }
     public function ExpenseStat(Request $request){
         $expenses = ExpenseReport::all();
-        return response()->json(['nbr_expenses'=>$expenses->count()]);
+        return response()->json(['nbr'=>$expenses->count()]);
     }
     public function ExpenseSum(Request $request, $id){
         $expenses = ExpenseReport::where('collaborateur_id', '=', $id)->sum('total_ttc');
