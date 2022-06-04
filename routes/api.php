@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\FileUploadController;
+use App\Http\Controllers\API\MailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\CollaborateurController;
@@ -84,7 +85,7 @@ Route::delete('/deleteSalle/{id}', [SalleController::class, 'destroy']);
 //////////////////////////////////////////////////////////////////EMAIL//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //API mail send
-//Route::get('/send-mail',[MailController::class,'sendEmail'] );
+Route::get('/send-mail',[MailController::class,'sendEmail'] );
 
 /////////////////////////////////////////////////////////////Gestion des produits////////////////////////////////////////////////////////////////////
 

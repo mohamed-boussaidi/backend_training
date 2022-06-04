@@ -18,4 +18,14 @@ class MailController extends Controller
         Mail::to("islemamor38@gmail.com")->send(new TestMail($details));
         return "Email Sent";
     }
+
+    public function sendEmaildata($data)
+    {
+        $details = [
+            'title' => $data->title,
+            'body'  => $data->body
+        ];
+        Mail::to($data->to)->send(new TestMail($details));
+        return "Email Sent";
+    }
 }
