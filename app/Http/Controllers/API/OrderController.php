@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Mail\TestMail;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -84,9 +86,15 @@ class OrderController extends Controller
         $order->status = 'accepted';
         $order->save();
 
+        $details = [
+            'title' => 'Votre Commande Numero '.$id.' a été accepté',
+            'body'  => 'Order Accepted Successfully .'
+        ];
+        Mail::to("islemamor38@gmail.com")->send(new TestMail($details));
+
         return response()->json([
             'status'=> 200,
-            'message'=>'Order Accepted Successfully',
+            'message'=>'your Order Accepted',
         ]);
     }
 
@@ -96,6 +104,11 @@ class OrderController extends Controller
         $order->status = 'rejected';
         $order->save();
 
+        $details = [
+            'title' => 'Votre Commande Numero '.$id.' a été Refusé',
+            'body'  => 'Your Order Rejected.'
+        ];
+        Mail::to("islemamor38@gmail.com")->send(new TestMail($details));
         return response()->json([
             'status'=> 200,
             'message'=>'Order Rejected Successfully',

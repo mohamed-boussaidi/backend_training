@@ -28,6 +28,6 @@ class TestMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Test Mail from surfside media')->view('emails.TestMail');
+        return $this->subject('SPOC App')->view('emails.TestMail');
     }
 }

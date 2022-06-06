@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Mail\TestMail;
 use Illuminate\Http\Request;
 use App\Models\ExpenseReport;
+use Illuminate\Support\Facades\Mail;
 
 
 class ExpenseReportController extends Controller
@@ -61,6 +63,12 @@ class ExpenseReportController extends Controller
         $expense->status = 'accepted';
         $expense->save();
 
+        $details = [
+            'title' => 'Votre Demande de note de frai Numero '.$id.' a été accepté',
+            'body'  => 'Expense Accepted .'
+        ];
+        Mail::to("islemamor38@gmail.com")->send(new TestMail($details));
+
         return response()->json([
             'status'=> 200,
             'message'=>'expense Accepted Successfully',
@@ -72,6 +80,12 @@ class ExpenseReportController extends Controller
         $expense = ExpenseReport::find($id);
         $expense->status = 'rejected';
         $expense->save();
+
+        $details = [
+            'title' => 'Votre Demande de note de frai Numero '.$id.' a été refusé',
+            'body'  => 'Expense Rejected .'
+        ];
+        Mail::to("islemamor38@gmail.com")->send(new TestMail($details));
 
         return response()->json([
             'status'=> 200,

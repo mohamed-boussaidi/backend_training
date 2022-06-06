@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Mail\TestMail;
 use Illuminate\Http\Request;
 use App\Models\Conge;
+use Illuminate\Support\Facades\Mail;
 
 
 class CongeController extends Controller
@@ -61,6 +63,12 @@ class CongeController extends Controller
         $conge->status = 'accepted';
         $conge->save();
 
+        $details = [
+            'title' => 'Votre Demande de Congé Numero '.$id.' a été accepté',
+            'body'  => 'Conge Accepted .'
+        ];
+        Mail::to("islemamor38@gmail.com")->send(new TestMail($details));
+
         return response()->json([
             'status'=> 200,
             'message'=>'Conge Accepted Successfully',
@@ -72,6 +80,12 @@ class CongeController extends Controller
         $conge = Conge::find($id);
         $conge->status = 'rejected';
         $conge->save();
+
+        $details = [
+            'title' => 'Votre Demande de Congé Numero '.$id.' a été refusé',
+            'body'  => 'Conge Rejected .'
+        ];
+        Mail::to("islemamor38@gmail.com")->send(new TestMail($details));
 
         return response()->json([
             'status'=> 200,
