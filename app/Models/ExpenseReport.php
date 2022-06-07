@@ -16,4 +16,8 @@ class ExpenseReport extends Model
     {
         return $this->belongsTo(Collaborateur::class);
     }
+    public function TypeDepense(): BelongsTo
+    {
+        return $this->belongsTo(TypeDepense::class);
+    }
 }

@@ -29,7 +29,6 @@ class OrderController extends Controller
     public function update(Request $request, $id){
         $order = Order::find($id);
         $order->collaborateur_id = $request->input('collaborateur_id');
-        $order->status = 'pendding';
         if($order->save()){
             $data=Order::all()->last();
             $products = json_decode($request->input('products'));

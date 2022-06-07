@@ -13,6 +13,9 @@ use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\ExpenseReportController;
 use App\Http\Controllers\API\SalleReservationController;
+use App\Http\Controllers\API\DepenseController;
+
+
 
 
 
@@ -206,7 +209,18 @@ Route::post('/uploadImage/products', [FileUploadController::class, 'uploadImageP
 Route::post('/uploadImage/salles', [FileUploadController::class, 'uploadImageSalles']);
 
 
+/////////////////////////////////////////////////////////////Gestion des produits////////////////////////////////////////////////////////////////////
 
+//API add Depense
+Route::post('/adddepense', [TypeDepenseController::class, 'store']);
+//API get Depense
+Route::get('/Depenses', [TypeDepenseController::class, 'index']);
+//API modifier Depense
+Route::get('/getDepense/{id}', [TypeDepenseController::class, 'getDepenseById']);
+ //API Update Depense
+Route::put('/UpdateDepense/{id}', [TypeDepenseController::class, 'update']);
+// API delete Depense
+Route::delete('/deleteDepense/{id}', [TypeDepenseController::class, 'destroy']);
 
 
 

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Mail;
 class ExpenseReportController extends Controller
 {
     public function index(){
-        $ExpenseReport = ExpenseReport::with('Collaborateur')
+        $ExpenseReport = ExpenseReport::with('Collaborateur' , 'TypeDepense')
             ->orderBy(\request()->sortBy ?? 'id', \request()->orderBy ?? 'desc')->get();
         return response()->json($ExpenseReport);
     }
@@ -21,7 +21,6 @@ class ExpenseReportController extends Controller
     public function update(Request $request, $id){
         $expense = ExpenseReport::find($id);
         $expense->collaborateur_id = $request->input('collaborateur_id');
-        $expense->status = 'pendding';
         $expense->date_demande = $request->input('date_demande');
         $expense->client = $request->input('client');
         $expense->type_depense = $request->input('type_depense');

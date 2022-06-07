@@ -35,7 +35,7 @@ class CollaborateurController extends Controller
         $collaborateur->date_sortie = $request->input('date_sortie');
         $collaborateur->ville = $request->input('ville');
         $collaborateur->departement = $request->input('departement');
-        $collaborateur->ville = $request->input('ville');
+        $collaborateur->image = $request->input('image');
         $collaborateur->password = Hash::make($request->input('password'));
         $collaborateur->save();
 
@@ -94,7 +94,7 @@ class CollaborateurController extends Controller
         $collaborateur->date_sortie = $request->input('date_sortie');
         $collaborateur->ville = $request->input('ville');
         $collaborateur->departement = $request->input('departement');
-        $collaborateur->ville = $request->input('ville');
+        $collaborateur->image = $request->input('image');
         $collaborateur->update();
 
         return response()->json([

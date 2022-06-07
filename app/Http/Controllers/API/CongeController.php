@@ -22,7 +22,6 @@ class CongeController extends Controller
      public function update(Request $request, $id){
         $conge = Conge::find($id);
         $conge->collaborateur_id = $request->input('collaborateur_id');
-        $conge->status = 'pendding';
         $conge->date_debut = $request->input('date_debut');
         $conge->date_fin = $request->input('date_fin');
         $conge->nbr_jrs = $request->input('nbr_jrs');
