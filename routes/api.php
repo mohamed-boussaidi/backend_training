@@ -14,6 +14,7 @@ use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\ExpenseReportController;
 use App\Http\Controllers\API\SalleReservationController;
 use App\Http\Controllers\API\DepenseController;
+use App\Http\Controllers\API\TypeDepenseController;
 
 
 
