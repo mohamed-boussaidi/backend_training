@@ -82,7 +82,7 @@ Route::get('/Salles', [SalleController::class, 'index']);
 //API modifier salle
 Route::get('/getSalle/{id}', [SalleController::class, 'edit']);
  //API Update salle
-Route::get('/UpdateSalle/{id}', [SalleController::class, 'update']);
+Route::put('/UpdateSalle/{id}', [SalleController::class, 'update']);
 // API delete salle
 Route::delete('/deleteSalle/{id}', [SalleController::class, 'destroy']);
 

@@ -11,7 +11,6 @@ class Salle extends Model
     use HasFactory;
     protected $table = 'salle';
 
-
     public function SalleReservation(): HasMany
     {
         return $this->hasMany(SalleReservation::class);

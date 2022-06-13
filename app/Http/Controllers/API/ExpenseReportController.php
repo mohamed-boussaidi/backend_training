@@ -63,7 +63,7 @@ class ExpenseReportController extends Controller
         $expense->save();
 
         $details = [
-            'title' => 'Votre Demande de note de frai Numero '.$id.' a été accepté',
+            'title' => 'Votre Demande de note de frais Numéro '.$id.' a été accepté',
             'body'  => 'Expense Accepted .'
         ];
         Mail::to("islemamor38@gmail.com")->send(new TestMail($details));

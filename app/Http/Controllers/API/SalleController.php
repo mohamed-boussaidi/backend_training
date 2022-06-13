@@ -18,10 +18,8 @@ class SalleController extends Controller
      {
          $salle = new Salle;
          $salle->nom_du_salle = $request->input('nom_du_salle');
-         $salle->adresse = $request->input('adresse');
          $salle->nbr_place = $request->input('nbr_place');
          $salle->equipements = $request->input('equipements');
-         $salle->ville = $request->input('ville');
          $salle->etage = $request->input('etage');
          $salle->image = $request->input('image');
          $salle->save();
@@ -40,10 +38,8 @@ class SalleController extends Controller
      {
         $salle = new Salle;
         $salle->nom_du_salle = $request->input('nom_du_salle');
-        $salle->adresse = $request->input('adresse');
         $salle->nbr_place = $request->input('nbr_place');
         $salle->equipements = $request->input('equipements');
-        $salle->ville = $request->input('ville');
         $salle->etage = $request->input('etage');
         $salle->image = $request->input('image');
 
