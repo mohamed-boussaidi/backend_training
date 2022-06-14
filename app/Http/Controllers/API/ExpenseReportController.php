@@ -21,9 +21,8 @@ class ExpenseReportController extends Controller
     public function update(Request $request, $id){
         $expense = ExpenseReport::find($id);
         $expense->collaborateur_id = $request->input('collaborateur_id');
-        $expense->date_demande = $request->input('date_demande');
         $expense->client = $request->input('client');
-        $expense->type_depense = $request->input('type_depense');
+        $expense->type_depense_id = $request->input('type_depense_id');
         $expense->total_ttc = $request->input('total_ttc');
         $expense->update();
         return response()->json([
@@ -42,9 +41,8 @@ class ExpenseReportController extends Controller
         $expense = new ExpenseReport();
         $expense->collaborateur_id = $request->input('collaborateur_id');
         $expense->status = 'pendding';
-        $expense->type_depense = $request->input('type_depense');
+        $expense->type_depense_id = $request->input('type_depense_id');
         $expense->total_ttc = $request->input('total_ttc');
-        $expense->date_demande = $request->input('date_demande');
         $expense->client = $request->input('client');
         $expense->save();
 

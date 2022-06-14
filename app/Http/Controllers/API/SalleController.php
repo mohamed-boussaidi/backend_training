@@ -36,8 +36,8 @@ class SalleController extends Controller
      }
      public function update(Request $request, $id)
      {
-        $salle = new Salle;
-        $salle->nom_du_salle = $request->input('nom_du_salle');
+        $salle = Salle::find($id);
+         $salle->nom_du_salle = $request->input('nom_du_salle');
         $salle->nbr_place = $request->input('nbr_place');
         $salle->equipements = $request->input('equipements');
         $salle->etage = $request->input('etage');
